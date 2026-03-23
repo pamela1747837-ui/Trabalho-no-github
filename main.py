@@ -16,3 +16,4 @@ while True:
     nome = input("digite seu nome: ")
     if nome == "sair":
         break
+cursor.execute (f"INSERT INT usuario VALUES ({id_usuario}, '{nome}', '{senha}', {idade})")
