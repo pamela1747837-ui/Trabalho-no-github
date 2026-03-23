@@ -7,3 +7,12 @@ bamco = mysql.connector.connect(
     password="root123",
     detabase="anny"
 )
+import sqlite3
+
+cursor = banco.cursor()
+cursor.execute("CREATE DATABASE IF NOT EXISTS Pamela")
+a = 10
+while True:
+    nome = input("digite seu nome: ")
+    if nome == "sair":
+        break
