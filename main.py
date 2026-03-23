@@ -17,3 +17,6 @@ while True:
     if nome == "sair":
         break
 cursor.execute (f"INSERT INT usuario VALUES ({id_usuario}, '{nome}', '{senha}', {idade})")
+cursor.execute("INSERT INTO usuario VALUES (1, 'Pamela e anny', 'senha', 24)")
+banco.commit()
+a += 1
