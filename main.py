@@ -25,3 +25,12 @@ def inserir_usuario(nome, email, senha, idade):
         print(u)
     cursor.close()
     conn.close()
+def listar_usuarios():
+    conn = conectar()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, email, idade FROM usuarios")
+    usuarios = cursor.fetchall()
+    for u in usuarios:
+        print(u)
+    cursor.close()
+    conn.close()
