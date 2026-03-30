@@ -7,24 +7,21 @@ banco = mysql.connector.connect(
     password="root123",
     detabase="anny_e_pamela"
 )
-import sqlite3
-
-cursor = banco.cursor()
-cursor.execute("CREATE DATABASE IF NOT EXISTS Pamela")
-a = 10
-while True:
-    nome = input("digite seu nome: ")
-    if nome == "sair":
-        break
-cursor.execute (f"INSERT INT usuario VALUES ({id_usuario}, '{nome}', '{senha}', {idade})")
-cursor.execute("INSERT INTO usuario VALUES (1, 'Pamela e anny', 'senha', 24)")
-banco.commit()
-a += 1
-cursor = conexao.cursor(dictionary=True)
-sql = "SELECT id, nome, email, idade FROM usuarios"
-cursor.execute(sql)
-usuarios = cursor.fetchall()
-for usuario in usuarios:
-    print(f"ID: {usuario['id']} | Nome: {usuario['nome']} | E-mail: {usuario['email']}")
-cursor.close()
-conexao.close()
+def inserir_usuario(nome, email, senha, idade):
+    conn = conectar()
+    cursor = conn.cursor()
+    sql = "INSERT INTO usuarios (nome, email, senha, idade) VALUES (%s, %s, %s, %s)"
+    cursor.execute(sql, (nome, email, senha, idade))
+    conn.commit()
+    print("Usuário inserido com sucesso!")
+    cursor.close()
+    conn.close()
+    def listar_usuarios():
+        conn = conectar()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, email, idade FROM usuarios")
+    usuarios = cursor.fetchall()
+    for u in usuarios:
+        print(u)
+    cursor.close()
+    conn.close()
