@@ -20,3 +20,11 @@ cursor.execute (f"INSERT INT usuario VALUES ({id_usuario}, '{nome}', '{senha}', 
 cursor.execute("INSERT INTO usuario VALUES (1, 'Pamela e anny', 'senha', 24)")
 banco.commit()
 a += 1
+cursor = conexao.cursor(dictionary=True)
+sql = "SELECT id, nome, email, idade FROM usuarios"
+cursor.execute(sql)
+usuarios = cursor.fetchall()
+for usuario in usuarios:
+    print(f"ID: {usuario['id']} | Nome: {usuario['nome']} | E-mail: {usuario['email']}")
+cursor.close()
+conexao.close()
