@@ -34,3 +34,12 @@ def listar_usuarios():
         print(u)
     cursor.close()
     conn.close()
+def apagar_usuario(id_usuario):
+    conn = conectar()
+    cursor = conn.cursor()
+    sql = "DELETE FROM usuarios WHERE id = %s"
+    cursor.execute(sql, (id_usuario,))
+    conn.commit()
+    print(f"Registro {id_usuario} removido.")
+    cursor.close()
+    conn.close()
